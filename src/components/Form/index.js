@@ -48,7 +48,8 @@ class InputForm extends Component {
             message: data.message
         };
 
-        emailjs.send('service_xzw7zgx', 'template_y6s5egq', templateParams, 'user_2bV6ysgVcackL2k9zq2J8')
+        emailjs.send(process.env.REACT_APP_EMAILJS_RECEIVER, process.env.REACT_APP_EMAILJS_TEMPLATEID,
+            templateParams,process.env.REACT_APP_EMAILJS_USERID)
             .then(function(response) {
                 console.log('SUCCESS!', response.status, response.text);
             }, function(error) {
