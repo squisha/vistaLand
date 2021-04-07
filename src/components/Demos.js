@@ -1,62 +1,120 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
-import DemoImg from './DemoImg';
-import Tooltip from '@material-ui/core/Tooltip';
+import Carousel from 'react-material-ui-carousel'
+import { Paper, Button } from '@material-ui/core'
+import Typography from "@material-ui/core/Typography";
+import {makeStyles} from "@material-ui/core/styles";
+import Modal from '@material-ui/core/Modal';
+import InputForm from "./Form";
+import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
+
+const useStyles = makeStyles({
+
+    img: {
+        width: '70%',
+        height: '70%',
+        maxWidth: '100%',
+        maxHeight: '100%'},
+    imgContainer: {
         display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: '#000000',
+        justifyContent: 'center'
     },
-    gridList: {
-        width: 1100,
-        height: 1000,
+    head1: {
+        color:'white',
+        textAlign:'center',
     },
-    titleBar: {
-        background:
-            'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    paper: {
+        background: 'linear-gradient(45deg, #000000 30%, #1f1f1f 95%)',
+        textAlign: 'center',
+        padding:'.5%'
     },
-    icon: {
-        color: 'rgba(255, 255, 255, 0.54)',
+    button: {
+        variant:"raised",
+        backgroundColor:'#ebebeb',
+        color:"#7f80ff",
+        elevation: 10,
+        margin: "10px"
     },
-}));
+    modal: {
+        background: 'linear-gradient(45deg, #7f80ff 30%, #ffffff 95%)',
+        textAlign: 'center',
+        width:"50%"
+    }
 
-export default function TitlebarGridList() {
-    const classes = useStyles();
+});
+
+function Demos()
+{
+    var items = [
+        {
+            name: " ",
+            img:'../../blackscholes.png',
+            description: "Black Scholes Warrant Valuation",
+            link:"https://www.vistalore.com/"
+        },
+        {
+            name: " ",
+            img:'../../baja.png',
+            description: "Baja 1000 Prep",
+            link:"https://www.vistalore.com/baja1k"
+
+        }
+    ]
 
     return (
-        <div className={classes.root}>
-            <GridList cellHeight={300}  spacing={30} className={classes.gridList}>
-                <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-                    <ListSubheader component="div"></ListSubheader>
-                </GridListTile>
-                {DemoImg.map((tile) => (
-                    <GridListTile key={tile.img}>
-                        <a href={tile.url}>
-                        <img src={tile.img} alt={tile.title} className="MuiGridListTile-imgFullHeight" style={{ width: "100%" }} />
-                        </a>
-                        <GridListTileBar
-                            title={tile.title}
-                            actionIcon={
-                                <Tooltip title={tile.info} placement="left-start" arrow>
-                                    <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                                        <InfoIcon />
-                                    </IconButton>
-                                </Tooltip>
-                            }
-                        />
-                    </GridListTile>
-                ))}
-            </GridList>
-        </div>
-    );
+        <Carousel autoPlay={false}>
+            {
+                items.map( (item, i) => <Item key={i} item={item} /> )
+            }
+        </Carousel>
+    )
 }
+
+function Item(props)
+{
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+
+
+
+    return (
+        <Paper>
+            <Paper elevation = {10} className={classes.paper}>
+                <Typography variant="h2" className={classes.head1} >{props.item.description}</Typography>
+                <Button className={classes.button} target="_blank" href={props.item.link} >
+                    Live Demo
+                </Button>
+                <Button className={classes.button} onClick={handleOpen}>
+                    Request More Info
+                </Button>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="contact-modal-title"
+                    aria-describedby="cnotact-modal-description"
+                >
+                    <div className={classes.modal} style={{position: 'absolute', left: '50%', top: '50%',
+                        transform: 'translate(-50%, -50%)'}}>
+                        <InputForm />
+                    </div>
+                </Modal>
+            </Paper>
+            <br/>
+            <Typography variant="h1" className={classes.head1} >{props.item.name}</Typography>
+            <div className={classes.imgContainer}>
+                <img src={props.item.img} className={classes.img} />
+            </div>
+
+        </Paper>
+    )
+}
+export default Demos;

@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import * as Yup from "yup";
 import Typography from "@material-ui/core/Typography";
 import Alert from '@material-ui/lab/Alert';
+import * as emailjs from 'emailjs-com';
 
 
 const styles = theme => ({
@@ -24,7 +25,8 @@ const validationSchema = Yup.object({
     name: Yup.string("Enter a name"),
     email: Yup.string("Enter your email")
         .email("Enter a valid email")
-        .required("Email is required")
+        .required("Email is required"),
+    captcha: Yup.string().required()
 });
 
 
@@ -34,6 +36,8 @@ class InputForm extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.CaptchaRef = React.createRef();
+
     }
 
     submit = data => {
@@ -44,6 +48,13 @@ class InputForm extends Component {
             message: data.message
         };
 
+        emailjs.send('service_xzw7zgx', 'template_y6s5egq', templateParams, 'user_2bV6ysgVcackL2k9zq2J8')
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                console.log('FAILED...', error);
+            });
+
         this.setState({messageSuccessAlert: true});
 
         setTimeout(() => {this.setState({messageSuccessAlert: false})}, 1750)
@@ -51,10 +62,12 @@ class InputForm extends Component {
     };
 
 
+
     render() {
         const classes = this.props;
-        const values = { name: "", email: "", message:""};
+        const values = { name: "", email: "", message:"", captcha:""};
         const messageSuccessAlert = this.state.messageSuccessAlert;
+
         let alert;
         if (messageSuccessAlert) {
             alert = <Alert severity="success"> Message Sent! </Alert>
@@ -62,10 +75,10 @@ class InputForm extends Component {
         return (
             <React.Fragment>
                 <div className={classes.container}>
-                    <Paper elevation={10} className={classes.paper}
-                           style={{background: 'linear-gradient(45deg, #7f80ff 30%, #000158 95%)',
-                               textAlign: 'center', padding: '10px 50px'}}>
-                        <Typography variant="h2">Contact</Typography>
+                    <Paper elevation={0} className={classes.paper}
+                           style={{background: "white",
+                               textAlign: 'center'}}>
+                        <Typography variant="h2" style={{color:"black"}}>Contact</Typography>
                         <Formik
                             render={props => <Form {...props} />}
                             initialValues={values}

@@ -15,46 +15,65 @@ const theme = createMuiTheme({
         MuiTypography: {
             h1: {
                 fontWeight:400,
-                color:'#20f9ff',
-                fontFamily: 'Quattrocento Sans',
-                fontSize: pxToRem(16),
+                color:'#ffffff',
+                fontFamily: 'Roboto',
+                fontSize: pxToRem(22),
                 letterSpacing:pxToRem(2),
-                [breakpoints.up("sm")]: {
-                    fontSize: pxToRem(22),
-                    letterSpacing:pxToRem(3),
-                },
-                [breakpoints.up("md")]: {
-                    fontSize: pxToRem(28),
-                    letterSpacing:pxToRem(4),
-                },
-                [breakpoints.up("lg")]: {
-                    fontSize: pxToRem(34),
-                    letterSpacing:pxToRem(5),
-                }
-            },
-            h2: {
-                fontWeight:400,
-                fontFamily: 'Quattrocento Sans',
-                color:'white',
-                padding: '16px',
-                fontSize: pxToRem(20),
-                letterSpacing:pxToRem(1),
                 [breakpoints.up("sm")]: {
                     fontSize: pxToRem(22),
                     letterSpacing:pxToRem(2),
                 },
                 [breakpoints.up("md")]: {
-                    fontSize: pxToRem(24),
+                    fontSize: pxToRem(38),
+                    letterSpacing:pxToRem(3),
+                },
+                [breakpoints.up("lg")]: {
+                    fontSize: pxToRem(48),
+                    letterSpacing:pxToRem(4),
+                }
+            },
+            h4: {
+                fontWeight:400,
+                color:'#ffffff',
+                fontFamily: 'Roboto',
+                fontSize: pxToRem(22),
+                letterSpacing:pxToRem(2),
+                [breakpoints.up("sm")]: {
+                    fontSize: pxToRem(22),
+                    letterSpacing:pxToRem(2),
+                },
+                [breakpoints.up("md")]: {
+                    fontSize: pxToRem(30),
+                    letterSpacing:pxToRem(3),
+                },
+                [breakpoints.up("lg")]: {
+                    fontSize: pxToRem(38),
+                    letterSpacing:pxToRem(4),
+                }
+            },
+            h2: {
+                fontWeight:300,
+                fontFamily: 'Roboto',
+                color:'white',
+                padding: '16px',
+                fontSize: pxToRem(14),
+                letterSpacing:pxToRem(1),
+                [breakpoints.up("sm")]: {
+                    fontSize: pxToRem(16),
+                    letterSpacing:pxToRem(2),
+                },
+                [breakpoints.up("md")]: {
+                    fontSize: pxToRem(18),
                     letterSpacing:pxToRem(3)
                 },
                 [breakpoints.up("lg")]: {
-                    fontSize: pxToRem(26),
+                    fontSize: pxToRem(20),
                     letterSpacing:pxToRem(4)
                 }
             },
             h3: {
                 fontWeight:200,
-                fontFamily: 'Quattrocento Sans',
+                fontFamily: 'Lato',
                 color:'white',
                 padding: '10px',
                 fontSize: pxToRem(12),

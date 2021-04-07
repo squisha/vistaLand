@@ -18,6 +18,11 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        host: "localhost.vistalore.com",
+        port: 2727,
+        https: true
+    },
     optimization: {
         splitChunks: { chunks: "all" }
     },

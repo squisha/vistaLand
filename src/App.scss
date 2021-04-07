@@ -1,3 +1,7 @@
+html, body {
+    overflow: hidden;
+}
+
 .App {
     text-align: center;
 }
@@ -103,4 +107,53 @@
 
 .jss5 {
         background-color: #20f9ff !important;
+}
+
+.tech img {
+    filter: grayscale(100%);
+}
+
+hr {
+    border: 0;
+    clear: both;
+    display: block;
+    margin: 1rem auto;
+    text-align: center;
+    width: 100%;
+}
+/* -- Animated hr -- */
+
+.progress {
+    background: rgba(1, 15, 30, 0.01);
+    height: 1px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress::before {
+    animation-duration: 5.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-name: progress;
+    background: #7f80ff;
+    content: "";
+    display: block;
+    height: 3px;
+    position: absolute;
+    width: 80px;
+}
+
+@keyframes progress {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(1440px);
+    }
+}
+
+footer {
+    margin-top:calc(100% - 60px);
+    bottom: 0;
+    height: "5rem";
 }

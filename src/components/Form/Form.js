@@ -1,10 +1,8 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import NameIcon from "@material-ui/icons/SupervisorAccount";
-import EmailIcon from "@material-ui/icons/Email";
-import CommentIcon from '@material-ui/icons/Comment';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 
 export const Form = props => {
@@ -15,7 +13,9 @@ export const Form = props => {
         handleSubmit,
         handleChange,
         isValid,
-        setFieldTouched
+        setFieldTouched,
+        setFieldValue,
+        CaptchaRef
     } = props;
     console.table(props);
 
@@ -24,48 +24,50 @@ export const Form = props => {
         handleChange(e);
         setFieldTouched(name, true, false);
     };
-    return (
-        <form onSubmit={handleSubmit}>
 
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            '& .MuiTextField-root': {
+                margin: theme.spacing(1),
+                width: '80%',
+            },
+        },
+    }));
+
+    const classes = useStyles();
+    const [value, setValue] = React.useState('Controlled');
+
+
+        return (
+        <form className={classes.root} onSubmit={handleSubmit}>
+            <div>
             <TextField
+                label="Full Name"
                 variant="outlined"
                 name="name"
                 helperText={touched.name ? errors.name : ""}
                 error={Boolean(errors.name)}
-                label="Name"
+                size="large"
                 value={name}
                 onChange={handleChange}
-                fullWidth
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <NameIcon />
-                        </InputAdornment>
-                    )
-                }}
+                multiline
             />
             <div>{Boolean(errors.name) ? errors.name : ""}</div>
             <br/>
             <TextField
+                label="Your Email"
                 variant="outlined"
                 name="email"
                 helperText={touched.email ? errors.email : ""}
                 error={Boolean(errors.email)}
-                label="Email"
-                fullWidth
+                size="large"
                 value={email}
                 onChange={handleChange}
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <EmailIcon />
-                        </InputAdornment>
-                    )
-                }}
-            />
-            <div>{Boolean(errors.email) ? errors.email : ""}</div>
-            <br/>
+                multiline
+            /></div>
+            <br />
             <TextField
+                label="Message"
                 variant="outlined"
                 multiline
                 rows={5}
@@ -73,19 +75,17 @@ export const Form = props => {
                 name="message"
                 helperText={touched.message ? errors.mesage : ""}
                 error={Boolean(errors.message)}
-                label="Message"
                 fullWidth
                 value={message}
                 onChange={handleChange}
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <CommentIcon />
-                        </InputAdornment>
-                    )
-                }}
             />
             <div>{Boolean(errors.message) ? errors.message : ""}</div>
+            <HCaptcha
+                sitekey='f5f292dc-4dc2-4c3b-9e9a-f8e758bfa68e'
+                onVerify={(response) => { setFieldValue("captcha", response); }}
+                ref={CaptchaRef}
+            />
+
             <Button
                 type="submit"
                 fullWidth

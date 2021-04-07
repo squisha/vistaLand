@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { HashRouter, Route, Switch, Link, useLocation } from 'react-router-dom';
 import Landing from './Landing'
 import Demos from './Demos'
+import Services from './Services'
 
 
 const useStyles = makeStyles({
@@ -21,6 +22,9 @@ const useStyles = makeStyles({
         maxWidth: '50%',
         maxHeight: '70%',
         marginLeft: '10%'
+    },
+    tab:{
+        color:'white'
     }
 
 });
@@ -36,14 +40,15 @@ function Nav() {
     const classes = useStyles();
     const location = useLocation();
     let currentTab = location.pathname;
-    const routes = ['/', '/demos']
+    const routes = ['/', '/demos', '/services']
     return (
         <nav className={classes.root}>
             <AppBar position='static' style={{background: '#000000'}}>
                 <Toolbar>
                     <img src='../../LOGO2020.png' alt="logo" className={classes.logo}/>
                     <Grid container justify={"center"}>
-                        <Tabs
+                        <Tabs className={classes.tab}
+                              TabIndicatorProps={{style: {backgroundColor: "#20f9ff"}}}
                             value={currentTab}
                         >
                             <Tab label={"Home"}
@@ -58,6 +63,13 @@ function Nav() {
                                  component={Link}
                                  to={routes[1]}
                                  {...a11yProps(1)}
+
+                            />
+                            <Tab label={"Services"}
+                                 value={routes[2]}
+                                 component={Link}
+                                 to={routes[2]}
+                                 {...a11yProps(2)}
 
                             />
                         </Tabs>
@@ -76,9 +88,12 @@ function TabsRouter() {
                 <Switch>
                     <Route exact path="/" component={Landing}></Route>
                     <Route path="/demos" component={Demos}></Route>
+                    <Route path="/services" component={Services}></Route>
                 </Switch>
             </HashRouter>
+
         </div>
+
     );
 }
 
