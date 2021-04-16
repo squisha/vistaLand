@@ -9,6 +9,7 @@ import { HashRouter, Route, Switch, Link, useLocation } from 'react-router-dom';
 import Landing from './Landing'
 import Demos from './Demos'
 import Services from './Services'
+import LOGO2020 from '../images/LOGO2020.png'
 
 
 const useStyles = makeStyles({
@@ -16,11 +17,8 @@ const useStyles = makeStyles({
         flexGrow: 1
     },
     logo: {
-        width: 300,
-        height: 90,
+        width: "17%",
         textAlign: 'center',
-        maxWidth: '50%',
-        maxHeight: '70%',
         marginLeft: '10%'
     },
     tab:{
@@ -36,6 +34,9 @@ function a11yProps(index) {
     };
 }
 
+
+
+
 function Nav() {
     const classes = useStyles();
     const location = useLocation();
@@ -43,11 +44,18 @@ function Nav() {
     const routes = ['/', '/demos', '/services']
     return (
         <nav className={classes.root}>
-            <AppBar position='static' style={{background: '#000000'}}>
+            <AppBar position='static'
+                    style={{background: '#000000'}}>
                 <Toolbar>
-                    <img src='../../LOGO2020.png' alt="logo" className={classes.logo}/>
+                    <img src={LOGO2020}
+                         alt="logo" className={classes.logo}
+
+                    />
                     <Grid container justify={"center"}>
+                        <Grid item xs={8} md={6}>
                         <Tabs className={classes.tab}
+                              variant="scrollable"
+                              scrollButtons="auto"
                               TabIndicatorProps={{style: {backgroundColor: "#20f9ff"}}}
                             value={currentTab}
                         >
@@ -73,6 +81,7 @@ function Nav() {
 
                             />
                         </Tabs>
+                        </Grid>
                     </Grid>
                 </Toolbar>
             </AppBar>

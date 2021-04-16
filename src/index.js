@@ -32,31 +32,12 @@ const theme = createMuiTheme({
                     letterSpacing:pxToRem(4),
                 }
             },
-            h4: {
-                fontWeight:400,
-                color:'#ffffff',
-                fontFamily: 'Roboto',
-                fontSize: pxToRem(22),
-                letterSpacing:pxToRem(2),
-                [breakpoints.up("sm")]: {
-                    fontSize: pxToRem(22),
-                    letterSpacing:pxToRem(2),
-                },
-                [breakpoints.up("md")]: {
-                    fontSize: pxToRem(30),
-                    letterSpacing:pxToRem(3),
-                },
-                [breakpoints.up("lg")]: {
-                    fontSize: pxToRem(38),
-                    letterSpacing:pxToRem(4),
-                }
-            },
             h2: {
-                fontWeight:300,
+                fontWeight:400,
                 fontFamily: 'Roboto',
                 color:'white',
                 padding: '16px',
-                fontSize: pxToRem(14),
+                fontSize: pxToRem(18),
                 letterSpacing:pxToRem(1),
                 [breakpoints.up("sm")]: {
                     fontSize: pxToRem(16),
@@ -89,6 +70,45 @@ const theme = createMuiTheme({
                 [breakpoints.up("lg")]: {
                     fontSize: pxToRem(16),
                     letterSpacing:pxToRem(4)
+                }
+            },
+            h4: {
+                fontWeight:400,
+                color:'#ffffff',
+                fontFamily: 'Roboto',
+                padding: '10px',
+                fontSize: pxToRem(26),
+                letterSpacing:pxToRem(2),
+                [breakpoints.up("sm")]: {
+                    fontSize: pxToRem(26),
+                    letterSpacing:pxToRem(2),
+                },
+                [breakpoints.up("md")]: {
+                    fontSize: pxToRem(24),
+                    letterSpacing:pxToRem(3),
+                },
+                [breakpoints.up("lg")]: {
+                    fontSize: pxToRem(34),
+                    letterSpacing:pxToRem(4),
+                }
+            },
+            paragraph: {
+                fontWeight:100,
+                fontFamily: 'Lato',
+                padding: '10px',
+                fontSize: pxToRem(16),
+                letterSpacing:pxToRem(1),
+                [breakpoints.up("sm")]: {
+                    fontSize: pxToRem(16),
+                    letterSpacing:pxToRem(2),
+                },
+                [breakpoints.up("md")]: {
+                    fontSize: pxToRem(16),
+                    letterSpacing:pxToRem(2)
+                },
+                [breakpoints.up("lg")]: {
+                    fontSize: pxToRem(18),
+                    letterSpacing:pxToRem(3)
                 }
             }
         }

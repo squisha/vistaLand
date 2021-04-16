@@ -5,8 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 import Modal from '@material-ui/core/Modal';
 import InputForm from "./Form";
-import { Link } from 'react-router-dom';
-
+import blackscholes from '../images/blackscholes.png'
+import baja from '../images/baja.png'
 
 const useStyles = makeStyles({
 
@@ -48,13 +48,13 @@ function Demos()
     var items = [
         {
             name: " ",
-            img:'../../blackscholes.png',
-            description: "Black Scholes Warrant Valuation",
-            link:"https://www.vistalore.com/"
+            img:blackscholes,
+            description: "Warrant Valuation Analyzer",
+            link:"https://www.vistalore.com/warrant"
         },
         {
             name: " ",
-            img:'../../baja.png',
+            img:baja,
             description: "Baja 1000 Prep",
             link:"https://www.vistalore.com/baja1k"
 
