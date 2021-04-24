@@ -73,7 +73,7 @@ export const Form = props => {
                 rows={5}
                 rowsMax={10}
                 name="message"
-                helperText={touched.message ? errors.mesage : ""}
+                helperText={touched.message ? errors.message : ""}
                 error={Boolean(errors.message)}
                 fullWidth
                 value={message}

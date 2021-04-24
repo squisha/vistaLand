@@ -6,15 +6,16 @@ import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { HashRouter, Route, Switch, Link, useLocation } from 'react-router-dom';
-import Landing from './Landing'
+import Landing1 from './Landing1'
 import Demos from './Demos'
-import Services from './Services'
+import Services1 from './Services1'
 import LOGO2020 from '../images/LOGO2020.png'
 
 
 const useStyles = makeStyles({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        zIndex:2,
     },
     logo: {
         width: "17%",
@@ -44,15 +45,14 @@ function Nav() {
     const routes = ['/', '/demos', '/services']
     return (
         <nav className={classes.root}>
-            <AppBar position='static'
-                    style={{background: '#000000'}}>
+            <AppBar style={{background: '#000000', position:"fixed"}}>
                 <Toolbar>
                     <img src={LOGO2020}
                          alt="logo" className={classes.logo}
 
                     />
                     <Grid container justify={"center"}>
-                        <Grid item xs={8} md={6}>
+                        <Grid item xs={12} md={10} lg={8} xl={6}>
                         <Tabs className={classes.tab}
                               variant="scrollable"
                               scrollButtons="auto"
@@ -85,6 +85,7 @@ function Nav() {
                     </Grid>
                 </Toolbar>
             </AppBar>
+        <Toolbar/>
         </nav>
     );
 }
@@ -95,9 +96,9 @@ function TabsRouter() {
             <HashRouter>
                 <Nav />
                 <Switch>
-                    <Route exact path="/" component={Landing}></Route>
+                    <Route exact path="/" component={Landing1}></Route>
                     <Route path="/demos" component={Demos}></Route>
-                    <Route path="/services" component={Services}></Route>
+                    <Route path="/services" component={Services1}></Route>
                 </Switch>
             </HashRouter>
 

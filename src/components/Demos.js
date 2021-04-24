@@ -7,6 +7,7 @@ import Modal from '@material-ui/core/Modal';
 import InputForm from "./Form";
 import blackscholes from '../images/blackscholes.png'
 import baja from '../images/baja.png'
+import dataquality from '../images/dataquality.png'
 
 const useStyles = makeStyles({
 
@@ -57,6 +58,13 @@ function Demos()
             img:baja,
             description: "Baja 1000 Prep",
             link:"https://www.vistalore.com/baja1k"
+
+        },
+        {
+            name: " ",
+            img:dataquality,
+            description: "Data Quality & Propensity Models",
+            link:"https://www.vistalore.com/dataQuality"
 
         }
     ]
