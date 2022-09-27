@@ -22,14 +22,13 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 
 import InputForm from "./Form/index";
-import halfWiz from '../images/halfWiz.png'
 import db from '../images/db.png'
 import charts from '../images/charts.png'
 import dashboard from '../images/dashboard.png'
 import software from '../images/software.png'
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import Demos from "./Demos";
-import Particles from "./Particles"
+import Particless from "./Particles"
 import Divider from "@material-ui/core/Divider";
 
 const breakpoints = createBreakpoints({});
@@ -54,10 +53,46 @@ const useStyles = makeStyles((theme) => ({
     },
     headerContent: {
         backgroundColor: "black",
-        height: "100%",
-        maxHeight: "60%",
-        padding: theme.spacing(8, 0, 6),
-        color: "white"
+        height: "15%",
+        color: "white",
+        paddingBottom:theme.spacing(2),
+        [breakpoints.up("sm")]: {
+            height: '17%',
+            paddingBottom: theme.spacing(4)
+        },
+        [breakpoints.up("md")]: {
+            height: '20%',
+            paddingBottom: theme.spacing(6)
+        },
+        [breakpoints.up("lg")]: {
+            height: '22%',
+            paddingBottom: theme.spacing(8)
+        },
+        [breakpoints.up("xl")]: {
+            height: '25%',
+            paddingBottom: theme.spacing(10)
+        }
+    },
+    partical: {
+        position:"absolute",
+        top: "8.5%",
+        left: 0,
+        zIndex:0,
+        width: "100%",
+        height: "20%",
+        overflow: "hidden",
+        [breakpoints.up("sm")]: {
+            height: '25%',
+        },
+        [breakpoints.up("md")]: {
+            height: '27%',
+        },
+        [breakpoints.up("lg")]: {
+            height: '36%',
+        },
+        [breakpoints.up("xl")]: {
+            height: '32%',
+        }
     },
     banner: {
         backgroundColor: 'rgba(0, 1, 88,0.9)',
@@ -103,6 +138,8 @@ const useStyles = makeStyles((theme) => ({
     },
     whitefont: {
         color:"white",
+        position:"relative",
+        zIndex:1,
     },
     blackfont: {
         color:"black"
@@ -124,7 +161,35 @@ const useStyles = makeStyles((theme) => ({
         maxHeight: '50%',
     },
     overlay: {
+        zIndex:0,
         position: 'relative',
+        margin: "10px auto",
+        marginTop:"0px",
+        background: "rgba(0,0,0, 0.8)",
+        width: "95%",
+        paddingTop: '3%',
+        height:"15%",
+        [breakpoints.up("sm")]: {
+            paddingTop: '7%',
+            width: '85%',
+            height:"17%",
+        },
+        [breakpoints.up("md")]: {
+            paddingTop: '3%',
+            width: '80%',
+            height:"20%",
+        },
+        [breakpoints.up("lg")]: {
+            paddingTop: '7%',
+            width: '75%',
+            height:"22%",
+        },
+        [breakpoints.up("xl")]: {
+            paddingTop: '5%',
+            width: '70%',
+            height:"25%",
+        }
+
     },
     toolbar: theme.mixins.toolbar,
 }));
@@ -138,9 +203,9 @@ export default function Album() {
             <main>
                 {/* Header unit */}
                 <div className={classes.headerContent}>
-                    <Container maxWidth="sm">
-                        <div style={{position:"absolute", top: "8.5%", left: 0, zIndex:0, width: "100%", height: "30%", overflow: "hidden" }}>
-                            <Particles/>
+                    <Container>
+                        <div className={classes.partical}>
+                            <Particless/>
                         </div>
                         <div className={classes.overlay}>
                         <Typography component="h2" variant="h1" align="center" gutterBottom className={classes.whitefont}>

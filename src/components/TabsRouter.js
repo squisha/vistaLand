@@ -10,6 +10,9 @@ import Landing1 from './Landing1'
 import Demos from './Demos'
 import Services1 from './Services1'
 import LOGO2020 from '../images/LOGO2020.png'
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+
+const breakpoints = createBreakpoints({});
 
 
 const useStyles = makeStyles({
@@ -18,9 +21,25 @@ const useStyles = makeStyles({
         zIndex:2,
     },
     logo: {
-        width: "17%",
+        width: "20%",
         textAlign: 'center',
-        marginLeft: '10%'
+        marginLeft: '2%',
+        [breakpoints.up("sm")]: {
+            width: '17%',
+            marginLeft: '5%',
+        },
+        [breakpoints.up("md")]: {
+            width: '15%',
+            marginLeft: '7%',
+        },
+        [breakpoints.up("lg")]: {
+            width: '12%',
+            marginLeft: '12%',
+        },
+        [breakpoints.up("xl")]: {
+            width: '10%',
+            marginLeft: '15%',
+        }
     },
     tab:{
         color:'white'
